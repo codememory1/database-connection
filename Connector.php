@@ -2,6 +2,7 @@
 
 namespace Codememory\Components\Database\Connection;
 
+use Codememory\Components\Database\Connection\Exceptions\DriverNotSupportedException;
 use Codememory\Components\Database\Connection\Exceptions\NoDatabaseConnectionException;
 use Codememory\Components\Database\Connection\Interfaces\ConnectorDataInterface;
 use Codememory\Components\Database\Connection\Interfaces\ConnectorInterface;
@@ -67,10 +68,16 @@ class Connector implements ConnectorInterface
 
     /**
      * @inheritDoc
+     * @return PDO
+     * @throws DriverNotSupportedException
      * @throws NoDatabaseConnectionException
      */
     public function getConnection(): PDO
     {
+
+        if (!$this->isDriverSupport()) {
+            throw new DriverNotSupportedException($this->getConnectorData()->getDriver()->getDriverName());
+        }
 
         if ($this->isConnection()) {
             return $this->connection;
@@ -91,6 +98,23 @@ class Connector implements ConnectorInterface
     }
 
     /**
+     * @return bool
+     */
+    private function isDriverSupport(): bool
+    {
+
+        $drivers = PDO::getAvailableDrivers();
+
+        return in_array($this->getConnectorData()->getDriver()->getDriverName(), $drivers);
+
+    }
+
+    /**
+     * =>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>
+     * Creates a connection to the database and saves the connection status
+     * and PDO object if the connection is successful
+     * <=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=
+     *
      * @return void
      */
     private function makingConnection(): void

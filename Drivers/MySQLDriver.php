@@ -5,34 +5,14 @@ namespace Codememory\Components\Database\Connection\Drivers;
 use Codememory\Components\Database\Connection\Interfaces\DriverInterface;
 
 /**
- * Class MysqlDriver
+ * Class MySQLDriver
  *
  * @package Codememory\Components\Database\Connection\Drivers
  *
  * @author  Codememory
  */
-final class MysqlDriver extends AbstractDriver
+final class MySQLDriver extends AbstractDriver
 {
-
-    /**
-     * @inheritDoc
-     */
-    public function getDSN(): string
-    {
-
-        return sprintf('%s:%s', $this->getDriverName(), $this->DSNCollector());
-
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getDriverName(): string
-    {
-
-        return 'mysql';
-
-    }
 
     /**
      * @inheritDoc
@@ -59,5 +39,26 @@ final class MysqlDriver extends AbstractDriver
         return implode(';', $dsn);
 
     }
+
+    /**
+     * @inheritDoc
+     */
+    public function getDSN(): string
+    {
+
+        return sprintf('%s:%s', $this->getDriverName(), $this->DSNCollector());
+
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getDriverName(): string
+    {
+
+        return 'mysql';
+
+    }
+
 
 }

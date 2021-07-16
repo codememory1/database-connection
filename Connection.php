@@ -6,6 +6,7 @@ use Codememory\Components\Database\Connection\Exceptions\ConnectorNotExistExcept
 use Codememory\Components\Database\Connection\Exceptions\ConnectorWithNameExistException;
 use Codememory\Components\Database\Connection\Interfaces\ConnectionInterface;
 use Codememory\Components\Database\Connection\Interfaces\ConnectorInterface;
+use PDO;
 
 /**
  * Class Connection

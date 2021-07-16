@@ -50,7 +50,7 @@ abstract class AbstractDriver implements DriverInterface
     /**
      * @param ConnectorDataInterface $connectorData
      *
-     * @return $this
+     * @return AbstractDriver
      */
     public function setConnectorData(ConnectorDataInterface $connectorData): AbstractDriver
     {
@@ -72,6 +72,11 @@ abstract class AbstractDriver implements DriverInterface
     }
 
     /**
+     * =>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>
+     * This method collects dsn and returns the finished dsn string
+     * of the current driver
+     * <=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=
+     *
      * @return string
      */
     abstract protected function DSNCollector(): string;
