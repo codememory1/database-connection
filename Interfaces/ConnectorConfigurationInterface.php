@@ -39,11 +39,11 @@ interface ConnectorConfigurationInterface
      * The name of the database that PDO will work with
      * <=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=
      *
-     * @param string $dbname
+     * @param string|null $dbname
      *
      * @return ConnectorConfigurationInterface
      */
-    public function dbname(string $dbname): ConnectorConfigurationInterface;
+    public function dbname(?string $dbname = null): ConnectorConfigurationInterface;
 
     /**
      * =>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>

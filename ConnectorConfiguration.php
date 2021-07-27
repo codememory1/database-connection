@@ -78,7 +78,7 @@ final class ConnectorConfiguration implements ConnectorConfigurationInterface, C
     /**
      * @inheritDoc
      */
-    public function dbname(string $dbname): ConnectorConfigurationInterface
+    public function dbname(?string $dbname = null): ConnectorConfigurationInterface
     {
 
         $this->dbname = $dbname;
