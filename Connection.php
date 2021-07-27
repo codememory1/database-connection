@@ -55,8 +55,11 @@ class Connection implements ConnectionInterface
         }
 
         $connector = $this->getConnector($connectorName);
+        $connectorData = $connector->getConnectorData();
 
-        call_user_func($callback, $connector->getConnectorData());
+        call_user_func($callback, $connectorData);
+
+        $connector = new Connector($connectorName, $connectorData);
 
         if (null !== $newConnectorName && !array_key_exists($newConnectorName, $this->connectors)) {
             $this->connectors[$newConnectorName] = $connector;
