@@ -43,4 +43,13 @@ interface ConnectorInterface
      */
     public function getConnectorData(): ConnectorDataInterface;
 
+    /**
+     * =>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>
+     * Returns the name of the current connector
+     * <=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=
+     *
+     * @return string
+     */
+    public function getConnectorName(): string;
+
 }

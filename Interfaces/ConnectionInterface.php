@@ -30,12 +30,13 @@ interface ConnectionInterface
      * using a callback, you can change certain connection data
      * <=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=<=
      *
-     * @param string   $connectorName
-     * @param callable $callback
+     * @param string      $connectorName
+     * @param callable    $callback
+     * @param string|null $newConnectorName
      *
-     * @return ConnectorInterface
+     * @return ConnectorInterface|ConnectionInterface
      */
-    public function reconnect(string $connectorName, callable $callback): ConnectorInterface;
+    public function reconnect(string $connectorName, callable $callback, ?string $newConnectorName = null): ConnectorInterface|ConnectionInterface;
 
     /**
      * =>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>

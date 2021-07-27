@@ -98,6 +98,16 @@ class Connector implements ConnectorInterface
     }
 
     /**
+     * @return string
+     */
+    public function getConnectorName(): string
+    {
+
+        return $this->connectorName;
+
+    }
+
+    /**
      * @return bool
      */
     private function isDriverSupport(): bool

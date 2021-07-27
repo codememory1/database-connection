@@ -6,7 +6,6 @@ use Codememory\Components\Database\Connection\Exceptions\ConnectorNotExistExcept
 use Codememory\Components\Database\Connection\Exceptions\ConnectorWithNameExistException;
 use Codememory\Components\Database\Connection\Interfaces\ConnectionInterface;
 use Codememory\Components\Database\Connection\Interfaces\ConnectorInterface;
-use PDO;
 
 /**
  * Class Connection
@@ -48,7 +47,7 @@ class Connection implements ConnectionInterface
      * @inheritDoc
      * @throws ConnectorNotExistException
      */
-    public function reconnect(string $connectorName, callable $callback): ConnectorInterface
+    public function reconnect(string $connectorName, callable $callback, ?string $newConnectorName = null): ConnectorInterface|ConnectionInterface
     {
 
         if (!$this->connectorExist($connectorName)) {
@@ -58,6 +57,12 @@ class Connection implements ConnectionInterface
         $connector = $this->getConnector($connectorName);
 
         call_user_func($callback, $connector->getConnectorData());
+
+        if (null !== $newConnectorName && !array_key_exists($newConnectorName, $this->connectors)) {
+            $this->connectors[$newConnectorName] = $connector;
+
+            return $this;
+        }
 
         return $connector;
 
