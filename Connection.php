@@ -55,7 +55,7 @@ class Connection implements ConnectionInterface
         }
 
         $connector = $this->getConnector($connectorName);
-        $connectorData = $connector->getConnectorData();
+        $connectorData = clone $connector->getConnectorData();
 
         call_user_func($callback, $connectorData);
 
