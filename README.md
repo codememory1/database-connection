@@ -1,17 +1,17 @@
 # Database Connection
 
-# Установка
+## Установка
 
 ```
 composer require codememory/database-connection
 ```
 
-# Поддерживаются драйвера
+## Поддерживаются драйвера
 - [x] MySQL
 - [x] PostgreSQL
 - [x] SQLite
 
-# Методы класса *Connection*
+## Методы класса *Connection*
 - `getConnector(): ConnectorInterface` Получить коннектор
     - string **$connectorName**
 - `getConnectors(): ConnectorInterface[]` Получить массив всех коннекторов
@@ -22,13 +22,13 @@ composer require codememory/database-connection
 - `connectorExist(): bool` Проверить существование коннектора
   - string **$connectorName**
 
-# Методы класса *Connector*
+## Методы класса *Connector*
 - `isConnection(): bool` Проверить подключение к базе данных
 - `getConnection(): PDO` Получить PDO объект, если подключение успешное
 - `getConnectorData(): ConnectorConfigurationInterface` Получить данные подключенного юзера
 - `getConnectorName(): string` Получить имя текущего коннектора
 
-# Пример создания коннектора
+## Пример создания коннектора
 ```php
 <?php
 
@@ -51,7 +51,7 @@ $connection->addConnector('connector-name', function (ConnectorConfigurationInte
 });
 ```
 
-# Пример переопределения данных коннектора
+## Пример переопределения данных коннектора
 ```php
 // Возьмем ранее добавленный коннектор "connector-name"
 
