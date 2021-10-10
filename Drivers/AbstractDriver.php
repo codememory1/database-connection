@@ -4,6 +4,7 @@ namespace Codememory\Components\Database\Connection\Drivers;
 
 use Codememory\Components\Database\Connection\Interfaces\ConnectorDataInterface;
 use Codememory\Components\Database\Connection\Interfaces\DriverInterface;
+use PDO;
 
 /**
  * Class AbstractDriver
@@ -18,7 +19,9 @@ abstract class AbstractDriver implements DriverInterface
     /**
      * @var array
      */
-    private array $options = [];
+    private array $options = [
+        PDO::ATTR_EMULATE_PREPARES => false
+    ];
 
     /**
      * @var ConnectorDataInterface|null
@@ -31,7 +34,7 @@ abstract class AbstractDriver implements DriverInterface
     public function setOptions(array $options): DriverInterface
     {
 
-        $this->options = array_merge($this->options, $options);
+        $this->options = $this->options + $options;
 
         return $this;
 
